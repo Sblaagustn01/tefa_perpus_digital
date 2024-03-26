@@ -44,6 +44,14 @@
         </div>
       </div>
     </div>
+
+    <div class="container-fluid">
+      <div class="row my-5">
+        <div class="col-lg-12">
+          <Statistik />
+        </div>
+      </div>
+    </div>
 </template>
 
 <style scoped>

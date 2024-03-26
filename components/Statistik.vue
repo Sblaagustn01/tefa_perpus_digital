@@ -1,8 +1,7 @@
 <template>
   <div>
-  <canvas id="myChart"></canvas>
-</div>
-
+    <canvas id="statistik"></canvas>
+  </div>
 </template>
 
 <script setup>
@@ -21,9 +20,10 @@ const data = {
   labels: labels,
   datasets: [{
     label: 'Pengunjung',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [30, 10, 5, 2, 20, 30, 45],
+    backgroundColor:  'rgba(255, 100, 20, 0.2)',
+    borderColor: 'rgb(0,0,0)',
+    borderWidth: 1,
+    data: [30, 40, 50, 40, 20, 50],
   }]
 };
 
