@@ -5,7 +5,9 @@ import { NuxtLink } from '#build/components';
     <div class="col-lg-12">
       <h2 class="text-center my-4">BUKU</h2>
       <div class="my-3">
-        <input type="search" class="form-control rounded-5" placeholder="Mau Baca apa hari ini?">
+        <form @submit.prevent="getBuku">
+        <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Mau Baca apa hari ini?">
+      </form>
       </div>
       <div class="my-3 text-muted">menampilkan 30 dari 30</div>
       <div class="row justify-content-evenly">
@@ -32,13 +34,14 @@ const supabase = useSupabaseClient()
 const buku = ref([])
 
 const getBuku = async () => {
-  const { data, error } = await supabase.from('buku').select(`*, kategori(*)`)
+  const { data, error } = await supabase.from('buku').select(`*, kategori(*)`).ilike("judul", `%${keyword.value}%`);
   if(data) buku.value = data
 }
 
 onMounted(() => {
   getBuku()
-})
+});
+const keyword = ref("");
 </script>
 
 <style scoped>
