@@ -28,11 +28,13 @@
     <div class="container-fluid">
       <div class="row my-5 d-flex justify-content-evenly ">
         <div class="col-lg-6 box">
+        <NuxtLink to="/pengunjung">
           <div class="card rounded-5">
             <div class="card-body">
-              <h2 class="text">3 pengunjung</h2>
+              <h2 class="text"> pengunjung</h2>
               </div>
             </div>
+          </NuxtLink>
         </div>
         <div class="col-lg-6 box">
           <div class="card c2 rounded-5">
@@ -45,7 +47,7 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid">d
       <div class="row my-5">
         <div class="col-lg-12">
           <Statistik />
