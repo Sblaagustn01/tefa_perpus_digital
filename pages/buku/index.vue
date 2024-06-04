@@ -9,7 +9,7 @@ import { NuxtLink } from '#build/components';
         <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Mau Baca apa hari ini?">
       </form>
       </div>
-      <div class="my-3 text-muted">menampilkan 30 dari 30</div>
+      <div class="my-3 text-muted">menampilkan {{ buku?.length }} dari {{ totalBuku }}</div>
       <div class="row justify-content-evenly">
         <div v-for="(buku,i) in buku" :key="i" class="col-lg-2">
           <NuxtLink :to="`/buku/${buku.id}`">
@@ -29,17 +29,23 @@ import { NuxtLink } from '#build/components';
 </template>
 
 <script setup>
-const supabase = useSupabaseClient()
+const supabase = useSupabaseClient();
 
-const buku = ref([])
+const buku = ref([]);
+const totalBuku = ref(0);
 
 const getBuku = async () => {
-  const { data, error } = await supabase.from('buku').select(`*, kategori(*)`).ilike("judul", `%${keyword.value}%`);
-  if(data) buku.value = data
+  const { data, error } = await supabase.from("buku").select("*, kategori(*)").ilike("judul", `%${keyword.value}%`);
+  if(data) buku.value = data;
+}
+const getTotalBuku = async () => {
+  const { count, error } = await supabase.from("buku").select("*, kategori(*)", { count: "exact", head: true});
+  if(count) totalBuku.value = count;
 }
 
 onMounted(() => {
-  getBuku()
+  getBuku();
+  getTotalBuku();
 });
 const keyword = ref("");
 </script>
