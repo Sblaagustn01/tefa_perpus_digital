@@ -13,7 +13,7 @@ import { NuxtLink } from '#build/components';
       <div class="row justify-content-evenly">
         <div v-for="(buku,i) in buku" :key="i" class="col-lg-2">
           <NuxtLink :to="`/buku/${buku.id}`">
-            <div class="card mb-3">
+            <div class="card mb-3 shadow-lg">
               <div class="card-body">
               <img :src="buku.cover" class="cover" :alt="buku.judul">
             </div>
@@ -51,6 +51,16 @@ const keyword = ref("");
 </script>
 
 <style scoped>
+  .shadow-lg {
+  box-shadow: 6px 4px 0 #2e2e2eae !important;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 20px #2e2e2eae !important;
+}
+.card {
+  transition: all .2s ease-in-out;
+}
 .card-body {
   width: 100%;
   height: 500px;
@@ -66,4 +76,3 @@ const keyword = ref("");
   background-color: grey;
 }
 </style>
-

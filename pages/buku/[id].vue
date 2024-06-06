@@ -2,7 +2,9 @@
   <div>
     <h1 class="text-start my-4">{{ buku.judul }}</h1>
     <div class="row">
-    <div class="col-md-5">
+      <div class="col-md-3">
+        <div class="card"> 
+          <div class="card-body">
     <span v-if="buku.cover"><img :src="buku.cover" :alt="buku.judul"></span>
     <span v-else><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png" :alt="buku.judul"></span>
   </div>
@@ -15,6 +17,8 @@
       <li class="list-group-item">deskripsi : {{ buku.deskripsi }}</li>
     </ul>
   </div>
+        </div>
+      </div>
     </div>
     </div>
 </template>
